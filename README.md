@@ -7,9 +7,13 @@
 
 **One-sentence goal:** Teach a transfer tax in basis points where tax is split between **burn (supply−−)** and **treasury**, and the three legs still equal the gross amount.
 
-**Real code:** `npm test`. **Not** a full token, **not** wasm.
+**Real code:** `npm test` (unit + **sequential composition**). **Not** a full token, **not** wasm.
 
 Reference: [eosio.token](https://github.com/eosio/eosio.contracts). Docs: [docs.wax.io](https://docs.wax.io/). Shared bps: [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
+
+## Composition note
+
+`tax.composition.test.ts` runs a desk of sequential taxed hops. Balances + treasury + burned always equals the seeded spendable amount. Only burn reduces `supply`. Overdraft and burn-above-supply leave the desk unchanged. Dust gross can tax 0.
 
 ## What is true (executed)
 
@@ -18,6 +22,7 @@ Reference: [eosio.token](https://github.com/eosio/eosio.contracts). Docs: [docs.
 | 3% tax, 200/300 of tax burns | burn + treasury + recipient = gross |
 | Dust gross | tax can be 0 |
 | Only burn reduces supply in `applyToSupply` | treasury is accrued counter |
+| Sequential hops | tracked sum conserved |
 
 ## Related
 
