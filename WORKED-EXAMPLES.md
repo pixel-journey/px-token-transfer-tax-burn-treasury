@@ -1,36 +1,32 @@
-# Worked examples — transfer tax
+# Worked examples — transfer tax burn + treasury
 
-## Example A — 5% tax, half of tax burns
+Config under test: `taxBps 300`, `burnBpsOfTax 200` (burn is a share **of the tax**, not of the gross).
 
-```text
-taxBps = 500          // 5% of gross
-burnBpsOfTax = 250    // half of the tax burns; half to treasury
-gross = 10_000n
+## breakdown on gross 10_000
 
-tax = floor(10000 * 500 / 10000) = 500
-burn = floor(500 * 250 / 500) = 250
-toTreasury = 250
-toRecipient = 9500
-sum legs = 10000
-```
+| Field | Value |
+| --- | --- |
+| tax | 300 |
+| burn | 200 |
+| toTreasury | 100 |
+| toRecipient | 9_700 |
+| sum | 10_000 = gross |
 
-## Example B — dust tax
+Zero tax → full amount to recipient. Gross 1 at 300 bps → tax 0 (dust). Tax 0 keeps burn 0 even if burnBpsOfTax is set.
 
-Small gross with low bps → `tax = 0` → burn 0, treasury 0, recipient = gross.  
-See also [dust visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer).
+Config refusals: burn share of tax > tax, taxBps > 10000. Gross 0 / negative / above MAX_AMOUNT refused.
 
-## Example C — pure burn tax
+## applyToSupply
 
-`burnBpsOfTax === taxBps` → entire tax burns; treasury 0.
+Supply 1_000_000 after one 10_000 transfer → supply **999_800** (only burn reduces supply), treasuryAccrued **100**. Burn larger than supply refused.
 
-## Example D — pure treasury tax
+## Composition (two hops)
 
-`burnBpsOfTax === 0` → tax all to treasury; supply unchanged by burn leg.
+Alice starts with 50_000.
 
-## Example E — multi-hop composition
+1. alice→bob 10_000 → alice 40_000, bob 9_700, treasury 100, supply −200.
+2. bob→carol 9_700 → bob 0, carol = recipient of breakdown(9700), treasury += that hop's treasury, supply − that hop's burn.
 
-Several taxed transfers: `net + totalBurned + totalTreasury === startGross` (composition locks conservation).
+Tracked: balances + treasury + burns = **50_000** throughout.
 
-## Example F — applyToSupply
-
-`supply' = supply - burn`. Refuses `burn > supply`.
+Overdraft 101 of 100 leaves desk unchanged. Supply 100 cannot absorb burn from gross 10_000. Dust 1→ hops leave treasury 0 and supply unchanged.
