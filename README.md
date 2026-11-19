@@ -2,7 +2,7 @@
 
 > **Domain:** fee-on-transfer token math  
 > **Sources:** [SOURCES.md](SOURCES.md)  
-> **Catalog:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
+> **Catalog:** `px-contract-examples-vault` (private; not this public course)
 
 **Goal:** `tax = floor(gross * taxBps / 10000)`, then split tax into **burn** and **treasury** so `burn + treasury + recipient === gross`.
 

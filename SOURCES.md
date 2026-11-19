@@ -18,17 +18,17 @@ treasury  = tax - burn
 burn + treasury + recipient === gross
 ```
 
-`burnBpsOfTax` is a share of the **tax**. On the 3% sample, 200 of 300 basis points of the tax burns — not 2% of gross. At 30 bps, amounts `1..333` pay tax 0 ([dust](https://github.com/pixel-journey/px-token-dust-truncation-visualizer)).
+`burnBpsOfTax` is a share of the **tax**. On the 3% sample, 200 of 300 basis points of the tax burns — not 2% of gross. At 30 bps, amounts `1..333` pay tax 0 (`px-token-dust-truncation-visualizer` (private; not this public course)).
 
-C++ mirror: [pxtax](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxtax) — accounting only, not deployed.
+C++ mirror: `wax-contract-compiler` (private; not this public course) — accounting only, not deployed.
 
 ## Related labs
 
 | Repo | Role |
 | --- | --- |
 | [dex tax](https://github.com/pixel-journey/px-token-dex-differentiated-tax) | Pool sees exact qty; tax is extra debit |
-| [dust](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) | First non-dust amount at 30 bps is 334 |
+| `px-token-dust-truncation-visualizer` (private; not this public course) | First non-dust amount at 30 bps is 334 |
 | [fee splitter](https://github.com/pixel-journey/px-treasury-incoming-fee-splitter) | Post-receive split; last leg remainder |
 | [ledger](https://github.com/pixel-journey/px-token-balance-ledger) | sum(balances) === supply |
 | [invariant kit](https://github.com/pixel-journey/px-invariant-kit) | Shared bps helpers |
-| [treasury path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/TREASURY-TOKEN-LEARNING-PATH.md) | Formulas cheatsheet |
+| `px-contract-examples-vault` (private; not this public course) | Formulas cheatsheet |
