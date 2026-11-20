@@ -32,4 +32,4 @@ Recipient gets `gross - tax`. That is correct for a documented **wallet** transf
 
 ## Honesty limits
 
-No wasm. Mirror: `wax-contract-compiler` (private; not this public course). Related: `px-token-dust-truncation-visualizer` (private; not this public course) · [fee splitter](https://github.com/pixel-journey/px-treasury-incoming-fee-splitter).
+No wasm. Mirror: `wax-contract-compiler` (private; not this public course). Related: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) · [fee splitter](https://github.com/pixel-journey/px-treasury-incoming-fee-splitter).

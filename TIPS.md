@@ -41,4 +41,4 @@ Sample that the tests lock: gross 10000, taxBps 300, burnBpsOfTax 200 → tax 30
 
 Wide multiply before divide on chain. `bigint` hides that class of overflow; `MAX_AMOUNT` is `2^62 - 1`.
 
-Related: `px-token-dust-truncation-visualizer` (private; not this public course) · [fee splitter](https://github.com/pixel-journey/px-treasury-incoming-fee-splitter) · [ledger](https://github.com/pixel-journey/px-token-balance-ledger) · `wax-contract-compiler` (private; not this public course)
+Related: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) · [fee splitter](https://github.com/pixel-journey/px-treasury-incoming-fee-splitter) · [ledger](https://github.com/pixel-journey/px-token-balance-ledger) · `wax-contract-compiler` (private; not this public course)
