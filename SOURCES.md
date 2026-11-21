@@ -5,6 +5,7 @@
 | [eosio.token](https://github.com/eosio/eosio.contracts) | Transfer / supply primitives |
 | [docs.wax.io](https://docs.wax.io/) | WAX development |
 | [docs.eosnetwork.com](https://docs.eosnetwork.com/) | Actions, assets |
+| [ANTELOPE-PORTABILITY](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ANTELOPE-PORTABILITY.md) | Floor formula ports; symbol and precision do not |
 
 Tax-on-transfer is a **dapp token policy**, not a system contract feature.
 
@@ -19,6 +20,10 @@ burn + treasury + recipient === gross
 ```
 
 `burnBpsOfTax` is a share of the **tax**. On the 3% sample, 200 of 300 basis points of the tax burns — not 2% of gross. At 30 bps, amounts `1..333` pay tax 0 ([px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer)).
+
+## Portability
+
+`floor(amount * bps / 10000)` ports to any Antelope token contract after you swap the symbol and precision. **PXJ precision is always 8** in this org. EOS system token is precision 4. `334` at 30 bps is a **minor-unit** cutoff, not 334 whole tokens.
 
 C++ mirror: `wax-contract-compiler` (private; not this public course) — accounting only, not deployed.
 
