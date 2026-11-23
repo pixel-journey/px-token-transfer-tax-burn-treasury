@@ -6,6 +6,12 @@
 | [docs.wax.io](https://docs.wax.io/) | WAX development |
 | [docs.eosnetwork.com](https://docs.eosnetwork.com/) | Actions, assets |
 | [ANTELOPE-PORTABILITY](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ANTELOPE-PORTABILITY.md) | Floor formula ports; symbol and precision do not |
+| [wharfkit/skill](https://github.com/wharfkit/skill) | SessionKit if a host later transfers |
+| [invariant kit](https://github.com/pixel-journey/px-invariant-kit) | Shared bps helpers |
+
+```bash
+git clone https://github.com/wharfkit/skill.git ~/.claude/skills/wharfkit
+```
 
 Tax-on-transfer is a **dapp token policy**, not a system contract feature.
 
